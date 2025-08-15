@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 
 const app = express();
 const db = new sqlite3.Database('formulario.db');
+const cors = require('cors');
+app.use(cors()); // Permite requisições de outros domínios
+app.use(bodyParser.urlencoded({ extended: true })); // Para processar dados de formulários  
 
 app.use(bodyParser.json());
 app.use(express.static('.')); // serve arquivos do front-end
@@ -31,3 +34,5 @@ app.post('/send-form', (req, res) => {
 });
 
 app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
+
+
