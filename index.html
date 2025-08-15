@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,19 +9,26 @@
   <style>
     :root {
       --bg: #05060a;
-      --card: rgba(255,255,255,0.06);
-      --card-hover: rgba(255,255,255,0.1);
+      --card: rgba(255, 255, 255, 0.06);
+      --card-hover: rgba(255, 255, 255, 0.1);
       --text: #e8ecff;
       --muted: #a9b1c6;
       --accent: #8ab4ff;
       --accent-2: #a78bfa;
       --glass: rgba(10, 14, 25, 0.55);
-      --border: rgba(255,255,255,0.12);
-      --shadow: 0 10px 40px rgba(0,0,0,0.4);
+      --border: rgba(255, 255, 255, 0.12);
+      --shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
     }
 
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
     body {
       margin: 0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
@@ -30,105 +38,304 @@
       line-height: 1.6;
     }
 
-  
+
     #spaceCanvas {
       position: fixed;
       inset: 0;
-      width: 100vw; height: 100vh;
+      width: 100vw;
+      height: 100vh;
       display: block;
       z-index: -2;
       background: radial-gradient(1200px 800px at 70% 10%, #0b1020 0%, #060912 35%, #04060c 60%, #03040a 100%);
     }
 
     .nebula {
-      position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
     }
+
     .nebula::before,
     .nebula::after {
-      content: ""; position: absolute; filter: blur(60px); opacity: .28; mix-blend-mode: screen;
-      width: 70vmax; height: 70vmax; border-radius: 50%;
+      content: "";
+      position: absolute;
+      filter: blur(60px);
+      opacity: .28;
+      mix-blend-mode: screen;
+      width: 70vmax;
+      height: 70vmax;
+      border-radius: 50%;
       background: radial-gradient(circle at 30% 30%, #5b8cff 0 35%, transparent 45%),
-                  radial-gradient(circle at 70% 60%, #b388ff 0 30%, transparent 45%),
-                  radial-gradient(circle at 50% 80%, #35e0ff 0 18%, transparent 35%);
+        radial-gradient(circle at 70% 60%, #b388ff 0 30%, transparent 45%),
+        radial-gradient(circle at 50% 80%, #35e0ff 0 18%, transparent 35%);
       animation: drift 60s linear infinite;
     }
-    .nebula::before { top: -20vmax; left: -10vmax; animation-duration: 70s; }
-    .nebula::after  { bottom: -25vmax; right: -15vmax; animation-duration: 90s; }
-    @keyframes drift { 0%{transform: translate(0,0) rotate(0)} 50%{transform: translate(4%, -2%) rotate(120deg)} 100%{transform: translate(0,0) rotate(360deg)} }
+
+    .nebula::before {
+      top: -20vmax;
+      left: -10vmax;
+      animation-duration: 70s;
+    }
+
+    .nebula::after {
+      bottom: -25vmax;
+      right: -15vmax;
+      animation-duration: 90s;
+    }
+
+    @keyframes drift {
+      0% {
+        transform: translate(0, 0) rotate(0)
+      }
+
+      50% {
+        transform: translate(4%, -2%) rotate(120deg)
+      }
+
+      100% {
+        transform: translate(0, 0) rotate(360deg)
+      }
+    }
 
 
     header {
-      position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px);
-      background: linear-gradient(to bottom, rgba(5,6,10,.7), rgba(5,6,10,.3));
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(5, 6, 10, .7), rgba(5, 6, 10, .3));
       border-bottom: 1px solid var(--border);
     }
-    .nav {
-      max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 20px;
-    }
-    .brand { font-weight: 700; letter-spacing: .5px; }
-    .brand span { color: var(--accent); }
-    .links { display: flex; gap: 14px; flex-wrap: wrap; }
-    .links a { color: var(--muted); text-decoration: none; padding: 8px 12px; border-radius: 999px; border: 1px solid transparent; transition: .25s ease; }
-    .links a:hover { color: var(--text); border-color: var(--border); background: var(--card-hover); }
 
-  
-    main { max-width: 1100px; margin: 0 auto; padding: 28px 20px 80px; }
-    section { margin: 40px 0; }
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 20px;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .links a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: .25s ease;
+    }
+
+    .links a:hover {
+      color: var(--text);
+      border-color: var(--border);
+      background: var(--card-hover);
+    }
+
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 20px 80px;
+    }
+
+    section {
+      margin: 40px 0;
+    }
 
     .hero {
-      display: grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items: center; min-height: 65vh;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 28px;
+      align-items: center;
+      min-height: 65vh;
     }
-    .hero h1 { font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; margin: 0 0 10px; }
-    .hero p.lead { color: var(--muted); font-size: clamp(1rem, 1.6vw, 1.25rem); margin: 0 0 20px; }
-    .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.1;
+      margin: 0 0 10px;
+    }
+
+    .hero p.lead {
+      color: var(--muted);
+      font-size: clamp(1rem, 1.6vw, 1.25rem);
+      margin: 0 0 20px;
+    }
+
+    .cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
     .btn {
-      appearance: none; border: 1px solid var(--border); background: var(--card);
-      padding: 12px 16px; border-radius: 14px; color: var(--text); text-decoration: none; font-weight: 600; transition: transform .08s ease, background .25s ease, border-color .25s ease;
+      appearance: none;
+      border: 1px solid var(--border);
+      background: var(--card);
+      padding: 12px 16px;
+      border-radius: 14px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform .08s ease, background .25s ease, border-color .25s ease;
       box-shadow: var(--shadow);
-      display: inline-flex; align-items: center; gap: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
-    .btn:hover { background: var(--card-hover); border-color: var(--accent); transform: translateY(-1px); }
-    .btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); border-color: transparent; color: #0a0e19; }
-    .btn.primary:hover { filter: brightness(1.05); }
+
+    .btn:hover {
+      background: var(--card-hover);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border-color: transparent;
+      color: #0a0e19;
+    }
+
+    .btn.primary:hover {
+      filter: brightness(1.05);
+    }
 
     .card {
       background: var(--glass);
       border: 1px solid var(--border);
-      border-radius: 18px; padding: 18px; box-shadow: var(--shadow);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: var(--shadow);
     }
 
-    .pill { font-size: .85rem; color: #0a0e19; background: linear-gradient(135deg, var(--accent), var(--accent-2)); display: inline-block; padding: 6px 10px; border-radius: 999px; margin-bottom: 10px; font-weight: 700; }
+    .pill {
+      font-size: .85rem;
+      color: #0a0e19;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
 
-    .grid { display: grid; gap: 18px; }
-    .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
-    .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
 
-    .project { display: grid; gap: 10px; }
-    .project h3 { margin: 0; }
-    .tags { display: flex; gap: 8px; flex-wrap: wrap; }
-    .tag { font-size: .8rem; color: var(--muted); border: 1px solid var(--border); padding: 6px 8px; border-radius: 999px; }
+    .grid.cols-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
 
-    .skills { display: flex; gap: 10px; flex-wrap: wrap; }
-    .skill { border: 1px solid var(--border); padding: 10px 12px; border-radius: 12px; background: rgba(255,255,255,0.03); }
+    .grid.cols-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
 
-    .contact form { display: grid; gap: 12px; }
-    .input { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border); background: rgba(255,255,255,0.04); color: var(--text); }
-    .input::placeholder { color: #9aa3b7; }
+    .project {
+      display: grid;
+      gap: 10px;
+    }
 
-    .link-grid { display: grid; gap: 8px; margin-top: 12px; }
+    .project h3 {
+      margin: 0;
+    }
 
-    footer { text-align: center; color: var(--muted); padding: 30px 0 80px; }
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
 
-    
-    .icon { width: 20px; height: 20px; }
+    .tag {
+      font-size: .8rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 6px 8px;
+      border-radius: 999px;
+    }
 
-    @media (max-width: 900px){
-      .hero { grid-template-columns: 1fr; }
-      .grid.cols-3 { grid-template-columns: 1fr; }
-      .grid.cols-2 { grid-template-columns: 1fr; }
+    .skills {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .skill {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .contact form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .input {
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+    }
+
+    .input::placeholder {
+      color: #9aa3b7;
+    }
+
+    .link-grid {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 30px 0 80px;
+    }
+
+
+    .icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .grid.cols-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .grid.cols-2 {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
+
 <body>
   <canvas id="spaceCanvas" aria-hidden="true"></canvas>
   <div class="nebula" aria-hidden="true"></div>
@@ -152,8 +359,11 @@
     <section id="inicio" class="hero">
       <div>
         <span class="pill">Bem-vindo ao meu universo</span>
-        <h1>Desenvolvedor Back-End focado em <span style="color: var(--accent)">Java/Spring Boot</span>, <span style="color: var(--accent-2)">Python</span> e <span style="color:#7ae6ff">JavaScript</span></h1>
-        <p class="lead">Construo a lógica por trás de aplicações robustas, com foco de estudo em Java/Spring Boot para o desenvolvimento de APIs. Utilizo Python para a criação de dashboards e tenho base em desenvolvimento web com HTML, CSS e JavaScript.</p>
+        <h1>Desenvolvedor Back-End focado em <span style="color: var(--accent)">Java/Spring Boot</span>, <span
+            style="color: var(--accent-2)">Python</span> e <span style="color:#7ae6ff">JavaScript</span></h1>
+        <p class="lead">Construo a lógica por trás de aplicações robustas, com foco de estudo em Java/Spring Boot para o
+          desenvolvimento de APIs. Utilizo Python para a criação de dashboards e tenho base em desenvolvimento web com
+          HTML, CSS e JavaScript.</p>
         <div class="cta">
           <a class="btn primary" href="#projetos">Ver projetos</a>
           <a class="btn" href="#contato">Falar comigo</a>
@@ -167,7 +377,7 @@
           <li>Dashboard de Análise de Dados com Power BI</li>
           <li>API RESTful para E-commerce com Java/Spring Boot e PostgreSQL</li>
           <li>Automação de processos com Python aplicando Programação Orientada a Objetos</li>
-          
+
         </ul>
       </div>
     </section>
@@ -177,7 +387,8 @@
       <div class="grid cols-3">
         <article class="card project">
           <h3>API rest E-commerce</h3>
-          <p>API REST para E-commerce com busca inteligente, filtros avançados e alta performance, utilizando Java, Spring Boot e PostgreSQL.</p>
+          <p>API REST para E-commerce com busca inteligente, filtros avançados e alta performance, utilizando Java,
+            Spring Boot e PostgreSQL.</p>
           <div class="tags">
             <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">PostgreSQL</span>
           </div>
@@ -185,7 +396,8 @@
         </article>
         <article class="card project">
           <h3>LiterAlura</h3>
-          <p>Catálogo de livros interativo para console que acessa um acervo de mais de 70 mil obras do Project Gutenberg através do consumo da API Gutendex.</p>
+          <p>Catálogo de livros interativo para console que acessa um acervo de mais de 70 mil obras do Project
+            Gutenberg através do consumo da API Gutendex.</p>
           <div class="tags">
             <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">PostgreSQL</span>
           </div>
@@ -207,7 +419,9 @@
       <div class="grid cols-2">
         <div class="card">
           <h3 style="margin-top:0">Quem sou</h3>
-          <p>Sou um desenvolvedor back-end em formação, focado em criar sistemas eficientes, escaláveis e bem estruturados. Tenho conhecimento em HTML, CSS e JavaScript, estou estudando Java e Spring Boot para desenvolvimento de APIs robustas e utilizo Python para criação de dashboards e visualização de dados.</p>
+          <p>Sou um desenvolvedor back-end em formação, focado em criar sistemas eficientes, escaláveis e bem
+            estruturados. Tenho conhecimento em HTML, CSS e JavaScript, estou estudando Java e Spring Boot para
+            desenvolvimento de APIs robustas e utilizo Python para criação de dashboards e visualização de dados.</p>
         </div>
         <div class="card">
           <h3 style="margin-top:0">Habilidades</h3>
@@ -225,45 +439,51 @@
       </div>
     </section>
 
-    <section id="contato" class="contact">
-      <span class="pill">Contato</span>
+    <section id="Minha Jornada" class="contact">
+      <span class="pill">Minha Jornada</span>
       <div class="grid cols-2">
         <div class="card">
-          <h3 style="margin-top:0">Vamos conversar</h3>
-          <p class="lead">Curtiu o visual espacial? Manda uma mensagem e me conta sua ideia.</p>
-          <form onsubmit="return sendForm(event)">
-            <input class="input" type="text" name="nome" placeholder="Seu nome" required />
-            <input class="input" type="email" name="email" placeholder="Seu e-mail" required />
-            <textarea class="input" name="mensagem" rows="5" placeholder="Sua mensagem" required></textarea>
-            <button class="btn primary" type="submit">Enviar</button>
-            <span id="formStatus" style="color: var(--muted)"></span>
-          </form>
+          <h3 style="margin-top:0"></h3>
+          <p class="lead"><strong>Base:</strong> Comecei no Suporte Técnico e migrei para o Desenvolvimento Web (HTML, CSS, JS) e Bootstrap criando aplicações Web.</p>
+          <p><strong>Evolução:</strong> Ao combinar Python (POO) para automação com o Power BI para visualização, consolidei meu perfil como Desenvolvedor e Analista de Dados, transformando dados brutos em insights.</p>
+          <p><strong>Foco Atual:</strong> Especialização em Back-end com Java e Spring Boot para construir APIs e sistemas de alta performance, onde busco aplicar todo o meu conhecimento.</p>
+
+
+
         </div>
         <div class="card">
           <h3 style="margin-top:0">Links</h3>
           <div class="link-grid">
             <a href="https://github.com/Melettz1" target="_blank" class="btn">
               <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C6.477 2 2 6.484 2 12.017C2 16.425 4.865 20.18 8.839 21.5C9.339 21.602 9.5 21.299 9.5 21.033C9.5 20.803 9.5 20.038 9.5 19C6.726 19.6 6.139 17.5 6.139 17.5C5.685 16.28 5.008 15.9 5.008 15.9C4.121 15.25 5.098 15.27 5.098 15.27C6.101 15.34 6.629 16.3 6.629 16.3C7.5 17.8 8.98 17.4 9.5 17.2C9.579 16.6 9.829 16.2 10.1 15.9C7.975 15.7 5.787 14.9 5.787 10.5C5.787 9.3 6.198 8.3 6.649 7.6C6.549 7.3 6.129 6.2 6.789 4.7C6.789 4.7 7.7 4.4 9.5 5.9C10.3 5.6 11.2 5.5 12.1 5.5C13 5.5 13.9 5.6 14.7 5.9C16.5 4.4 17.4 4.7 17.4 4.7C18.1 6.2 17.7 7.3 17.6 7.6C18.1 8.3 18.5 9.3 18.5 10.5C18.5 14.9 16.3 15.7 14.2 15.9C14.5 16.2 14.8 16.7 14.8 17.5C14.8 18.7 14.8 19.7 14.8 20.1C14.8 20.4 15 20.7 15.5 20.6C19.5 18.8 22.1 15 22.1 12.017C22.1 6.484 17.522 2 12 2Z" fill="currentColor"/>
+                <path
+                  d="M12 2C6.477 2 2 6.484 2 12.017C2 16.425 4.865 20.18 8.839 21.5C9.339 21.602 9.5 21.299 9.5 21.033C9.5 20.803 9.5 20.038 9.5 19C6.726 19.6 6.139 17.5 6.139 17.5C5.685 16.28 5.008 15.9 5.008 15.9C4.121 15.25 5.098 15.27 5.098 15.27C6.101 15.34 6.629 16.3 6.629 16.3C7.5 17.8 8.98 17.4 9.5 17.2C9.579 16.6 9.829 16.2 10.1 15.9C7.975 15.7 5.787 14.9 5.787 10.5C5.787 9.3 6.198 8.3 6.649 7.6C6.549 7.3 6.129 6.2 6.789 4.7C6.789 4.7 7.7 4.4 9.5 5.9C10.3 5.6 11.2 5.5 12.1 5.5C13 5.5 13.9 5.6 14.7 5.9C16.5 4.4 17.4 4.7 17.4 4.7C18.1 6.2 17.7 7.3 17.6 7.6C18.1 8.3 18.5 9.3 18.5 10.5C18.5 14.9 16.3 15.7 14.2 15.9C14.5 16.2 14.8 16.7 14.8 17.5C14.8 18.7 14.8 19.7 14.8 20.1C14.8 20.4 15 20.7 15.5 20.6C19.5 18.8 22.1 15 22.1 12.017C22.1 6.484 17.522 2 12 2Z"
+                  fill="currentColor" />
               </svg>
               GitHub
             </a>
             <a href="https://www.linkedin.com/in/pedro-lucas-meletti-b57227209/" target="_blank" class="btn">
               <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19 3C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19ZM18.5 18.5V13.2C18.5 12.3354 18.1565 11.5062 17.5452 10.8948C16.9338 10.2835 16.1046 9.94 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17C14.6813 12.17 15.0374 12.3175 15.2999 12.5801C15.5625 12.8426 15.71 13.1987 15.71 13.57V18.5H18.5ZM6.88 8.56C7.32556 8.56 7.75288 8.383 8.06794 8.06794C8.383 7.75288 8.56 7.32556 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19C6.43178 5.19 6.00193 5.36805 5.68499 5.68499C5.36805 6.00193 5.19 6.43178 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56ZM8.27 18.5V10.13H5.5V18.5H8.27Z" fill="currentColor"/>
+                <path
+                  d="M19 3C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19ZM18.5 18.5V13.2C18.5 12.3354 18.1565 11.5062 17.5452 10.8948C16.9338 10.2835 16.1046 9.94 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17C14.6813 12.17 15.0374 12.3175 15.2999 12.5801C15.5625 12.8426 15.71 13.1987 15.71 13.57V18.5H18.5ZM6.88 8.56C7.32556 8.56 7.75288 8.383 8.06794 8.06794C8.383 7.75288 8.56 7.32556 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19C6.43178 5.19 6.00193 5.36805 5.68499 5.68499C5.36805 6.00193 5.19 6.43178 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56ZM8.27 18.5V10.13H5.5V18.5H8.27Z"
+                  fill="currentColor" />
               </svg>
               LinkedIn
             </a>
             <a href="https://codepen.io/Melettz1" target="_blank" class="btn">
               <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM16.62 8.99C16.06 8.44 15.29 8.16 14.5 8.16C13.71 8.16 12.94 8.44 12.38 8.99L12 9.36L11.62 8.98C10.48 7.83 8.5 7.83 7.36 8.98C6.22 10.12 6.22 12.1 7.36 13.24L12 17.9L16.64 13.24C17.78 12.1 17.78 10.12 16.62 8.99Z" fill="currentColor"/>
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM16.62 8.99C16.06 8.44 15.29 8.16 14.5 8.16C13.71 8.16 12.94 8.44 12.38 8.99L12 9.36L11.62 8.98C10.48 7.83 8.5 7.83 7.36 8.98C6.22 10.12 6.22 12.1 7.36 13.24L12 17.9L16.64 13.24C17.78 12.1 17.78 10.12 16.62 8.99Z"
+                  fill="currentColor" />
               </svg>
               CodePen
             </a>
             <a href="https://drive.google.com/uc?export=download&id=1L-0ZGzNOYSRbwiSjzyEVmy3DzkyxQGG6
 " target="_blank" class="btn">
               <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM12 17L17 12H14V7H10V12H7L12 17Z" fill="currentColor"/>
+                <path
+                  d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM12 17L17 12H14V7H10V12H7L12 17Z"
+                  fill="currentColor" />
               </svg>
               Currículo PDF
             </a>
@@ -271,95 +491,102 @@
         </div>
       </div>
     </section>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
     <footer>
-       © <span id="year"></span> • Desenvolvido por @Melettz1
-    <a href="https://github.com/Melettz1" target="_blank" class="github-icon-svg">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+      © <span id="year"></span> • Desenvolvido por @Melettz1
+      <a href="https://github.com/Melettz1" target="_blank" class="github-icon-svg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-github"
+          viewBox="0 0 16 16">
+          <path
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
         </svg>
-    </a> •
+      </a> •
     </footer>
   </main>
 
   <script>
-    
+
     const canvas = document.getElementById('spaceCanvas');
     const ctx = canvas.getContext('2d');
     let stars = [], meteors = []; let w, h, dpr;
 
-    function rand(min, max){ return Math.random() * (max - min) + min; }
+    function rand(min, max) { return Math.random() * (max - min) + min; }
 
-    function resize(){
+    function resize() {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       w = canvas.width = Math.floor(innerWidth * dpr);
       h = canvas.height = Math.floor(innerHeight * dpr);
       canvas.style.width = innerWidth + 'px';
       canvas.style.height = innerHeight + 'px';
-      
+
       const count = Math.floor((innerWidth * innerHeight) / 7000);
-      stars = new Array(count).fill(0).map(()=>({
+      stars = new Array(count).fill(0).map(() => ({
         x: Math.random() * w,
         y: Math.random() * h,
         r: rand(0.6, 1.8) * dpr,
         a: rand(0.5, 0.9),
         tw: rand(0.002, 0.01),
-        o: Math.random()*Math.PI*2,
+        o: Math.random() * Math.PI * 2,
       }));
     }
     window.addEventListener('resize', resize);
 
-    function drawStars(t){
+    function drawStars(t) {
       ctx.save();
-      ctx.clearRect(0,0,w,h);
-      for(const s of stars){
+      ctx.clearRect(0, 0, w, h);
+      for (const s of stars) {
         const twinkle = s.a + Math.sin(t * s.tw + s.o) * 0.25;
         ctx.globalAlpha = Math.max(0, Math.min(1, twinkle));
         ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
         ctx.fillStyle = '#ffffff';
         ctx.fill();
       }
       ctx.restore();
     }
 
-    function spawnMeteor(){
-    
-      if(Math.random() < 0.02 && meteors.length < 3){
+    function spawnMeteor() {
+
+      if (Math.random() < 0.02 && meteors.length < 3) {
         const fromLeft = Math.random() > 0.5;
         const startX = fromLeft ? -50 * dpr : w + 50 * dpr;
-        const startY = rand(0.1*h, 0.6*h);
+        const startY = rand(0.1 * h, 0.6 * h);
         const speed = rand(6, 10) * dpr;
         const angle = fromLeft ? rand(-0.4, -0.15) : rand(Math.PI - 0.4, Math.PI - 0.15);
-        meteors.push({ x: startX, y: startY, vx: Math.cos(angle)*speed, vy: Math.sin(angle)*speed, life: 0, maxLife: rand(40, 80) });
+        meteors.push({ x: startX, y: startY, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, life: 0, maxLife: rand(40, 80) });
       }
     }
 
-    function drawMeteors(){
+    function drawMeteors() {
       ctx.save();
-      for(let i=meteors.length-1; i>=0; i--){
+      for (let i = meteors.length - 1; i >= 0; i--) {
         const m = meteors[i];
         m.x += m.vx; m.y += m.vy; m.life++;
-        
+
         const len = 60 * dpr;
-        const grad = ctx.createLinearGradient(m.x, m.y, m.x - m.vx*4, m.y - m.vy*4);
+        const grad = ctx.createLinearGradient(m.x, m.y, m.x - m.vx * 4, m.y - m.vy * 4);
         grad.addColorStop(0, 'rgba(255,255,255,0.9)');
         grad.addColorStop(1, 'rgba(138,180,255,0)');
         ctx.strokeStyle = grad; ctx.lineWidth = 2 * dpr; ctx.beginPath();
-        ctx.moveTo(m.x, m.y); ctx.lineTo(m.x - m.vx*4, m.y - m.vy*4); ctx.stroke();
+        ctx.moveTo(m.x, m.y); ctx.lineTo(m.x - m.vx * 4, m.y - m.vy * 4); ctx.stroke();
 
-        ctx.beginPath(); ctx.arc(m.x, m.y, 2.5*dpr, 0, Math.PI*2); ctx.fillStyle = '#fff'; ctx.fill();
+        ctx.beginPath(); ctx.arc(m.x, m.y, 2.5 * dpr, 0, Math.PI * 2); ctx.fillStyle = '#fff'; ctx.fill();
 
-        if(m.life > m.maxLife || m.x < -len || m.x > w+len || m.y < -len || m.y > h+len){
-          meteors.splice(i,1);
+        if (m.life > m.maxLife || m.x < -len || m.x > w + len || m.y < -len || m.y > h + len) {
+          meteors.splice(i, 1);
         }
       }
       ctx.restore();
     }
 
     let last = 0;
-    function loop(ts){
-      const t = ts/1000; 
+    function loop(ts) {
+      const t = ts / 1000;
       drawStars(t);
       spawnMeteor();
       drawMeteors();
@@ -367,36 +594,36 @@
     }
 
     async function sendForm(e) {
-  e.preventDefault();
-  const form = e.target;
-  const data = Object.fromEntries(new FormData(form).entries());
-  const status = document.getElementById('formStatus');
-  status.textContent = 'Enviando…';
+      e.preventDefault();
+      const form = e.target;
+      const data = Object.fromEntries(new FormData(form).entries());
+      const status = document.getElementById('formStatus');
+      status.textContent = 'Enviando…';
 
-  try {
-    const res = await fetch('http://localhost:3000/send-form', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
+      try {
+        const res = await fetch('http://localhost:3000/send-form', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
 
-    const result = await res.json();
-    status.textContent = result.message;
-    form.reset();
-  } catch (err) {
-    status.textContent = 'Erro ao enviar a mensagem.';
-    console.error(err);
-  }
-  return false;
-}
-    
+        const result = await res.json();
+        status.textContent = result.message;
+        form.reset();
+      } catch (err) {
+        status.textContent = 'Erro ao enviar a mensagem.';
+        console.error(err);
+      }
+      return false;
+    }
 
-    
+
+
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
         const id = a.getAttribute('href').slice(1);
         const el = document.getElementById(id);
-        if(el){ e.preventDefault(); el.scrollIntoView({behavior: 'smooth', block: 'start'}); }
+        if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       });
     });
 
@@ -406,4 +633,5 @@
     requestAnimationFrame(loop);
   </script>
 </body>
+
 </html>
