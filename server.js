@@ -1,36 +1,33 @@
 const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
 const sqlite3 = require('sqlite3').verbose();
-const path = require('path');
+const bodyParser = require('body-parser');
 
 const app = express();
-app.use(cors());
+const db = new sqlite3.Database('formulario.db');
+
 app.use(bodyParser.json());
+app.use(express.static('.')); // serve arquivos do front-end
 
-const db = new sqlite3.Database(path.join(__dirname, 'formulario.db'), (err) => {
-  if (err) return console.error(err.message);
-  console.log('Conectado ao banco SQLite.');
-});
-
-db.run(`
-  CREATE TABLE IF NOT EXISTS contatos (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome TEXT,
-    email TEXT
-  )
-`);
+// Cria tabela se não existir
+db.run(`CREATE TABLE IF NOT EXISTS forms (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  nome TEXT,
+  email TEXT,
+  mensagem TEXT
+)`);
 
 app.post('/send-form', (req, res) => {
-  const { nome, email } = req.body;
-  const query = 'INSERT INTO contatos (nome, email) VALUES (?, ?)';
-  db.run(query, [nome, email], function(err) {
+  const { nome, email, mensagem } = req.body;
+
+  const stmt = db.prepare('INSERT INTO forms (nome, email, mensagem) VALUES (?, ?, ?)');
+  stmt.run(nome, email, mensagem, function(err) {
     if (err) {
-      console.error(err.message);
-      return res.status(500).json({ message: 'Erro ao enviar mensagem.' });
+      console.error(err);
+      return res.json({ message: 'Erro ao salvar no banco.' });
     }
-    res.json({ message: 'Mensagem enviada com sucesso!' });
+    res.json({ message: 'Formulário enviado com sucesso!' });
   });
+  stmt.finalize();
 });
 
 app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
