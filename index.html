@@ -366,18 +366,30 @@
       last = ts; requestAnimationFrame(loop);
     }
 
-    function sendForm(e){
-      e.preventDefault();
-      const form = e.target; const data = Object.fromEntries(new FormData(form).entries());
-      const status = document.getElementById('formStatus');
-      status.textContent = 'Enviando…';
-      
-      setTimeout(()=>{
-        status.textContent = 'Mensagem enviada! (exemplo)';
-        form.reset();
-      }, 800);
-      return false;
-    }
+    async function sendForm(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = Object.fromEntries(new FormData(form).entries());
+  const status = document.getElementById('formStatus');
+  status.textContent = 'Enviando…';
+
+  try {
+    const res = await fetch('http://localhost:3000/send-form', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    const result = await res.json();
+    status.textContent = result.message;
+    form.reset();
+  } catch (err) {
+    status.textContent = 'Erro ao enviar a mensagem.';
+    console.error(err);
+  }
+  return false;
+}
+    
 
     
     document.querySelectorAll('a[href^="#"]').forEach(a => {
