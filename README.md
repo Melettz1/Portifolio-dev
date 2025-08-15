@@ -4,6 +4,8 @@ Bem-vindo ao meu portfólio digital! Este site apresenta meus projetos e experi�
 
 ---
 
+## 🔹 Acessar: https://melettz1.github.io/Portifolio-dev/
+
 ## 🔹 Sobre o Site
 
 O objetivo do site é mostrar minhas habilidades e projetos, destacando:
