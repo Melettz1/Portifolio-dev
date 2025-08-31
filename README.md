@@ -41,15 +41,6 @@ O design do site é inspirado no **universo**, com um layout moderno e **respons
 
 ---
 
-## 🔹 Tecnologias Utilizadas
-
-- **Back-End:** Java, Spring Boot, Python  
-- **Front-End:** HTML, CSS, JavaScript  
-- **Banco de Dados:** PostgreSQL  
-- **Ferramentas:** APIs REST, Dashboards, Leaderboards, Canvas (para jogos)
-
----
-
 ## 🔹 Como Executar Localmente
 
 ```bash
